@@ -1,9 +1,11 @@
-﻿  BoardDrawer.cpp
-c:\users\vcharatsidis\documents\visual studio 2017\projects\fast sudoku solver\fast solver\boarddrawer.cpp(1): warning C4067: unexpected tokens following preprocessor directive - expected a newline
-c:\users\vcharatsidis\documents\visual studio 2017\projects\fast sudoku solver\fast solver\boarddrawer.cpp(2): warning C4067: unexpected tokens following preprocessor directive - expected a newline
-c:\users\vcharatsidis\documents\visual studio 2017\projects\fast sudoku solver\fast solver\boarddrawer.cpp(3): warning C4067: unexpected tokens following preprocessor directive - expected a newline
-c:\users\vcharatsidis\documents\visual studio 2017\projects\fast sudoku solver\fast solver\boarddrawer.cpp(4): warning C4067: unexpected tokens following preprocessor directive - expected a newline
-c:\users\vcharatsidis\documents\visual studio 2017\projects\fast sudoku solver\fast solver\boarddrawer.cpp(5): warning C4067: unexpected tokens following preprocessor directive - expected a newline
-c:\users\vcharatsidis\documents\visual studio 2017\projects\fast sudoku solver\fast solver\boarddrawer.cpp(19): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
-  fast solver.vcxproj -> C:\Users\vcharatsidis\Documents\Visual Studio 2017\Projects\fast sudoku solver\Debug\fast solver.exe
-  fast solver.vcxproj -> C:\Users\vcharatsidis\Documents\Visual Studio 2017\Projects\fast sudoku solver\Debug\fast solver.pdb (Partial PDB)
+﻿  Main.cpp
+c:\users\vcharatsidis\documents\visual studio 2017\projects\sudoku\sudoku\main.cpp(5): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+c:\users\vcharatsidis\documents\visual studio 2017\projects\sudoku\sudoku\superhard25x25sudoku.cpp(1): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+c:\users\vcharatsidis\documents\visual studio 2017\projects\sudoku\sudoku\main.cpp(6): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+c:\users\vcharatsidis\documents\visual studio 2017\projects\sudoku\sudoku\boarddrawer.cpp(1): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+c:\users\vcharatsidis\documents\visual studio 2017\projects\sudoku\sudoku\boarddrawer.cpp(2): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+c:\users\vcharatsidis\documents\visual studio 2017\projects\sudoku\sudoku\boarddrawer.cpp(3): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+c:\users\vcharatsidis\documents\visual studio 2017\projects\sudoku\sudoku\boarddrawer.cpp(4): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+c:\users\vcharatsidis\documents\visual studio 2017\projects\sudoku\sudoku\boarddrawer.cpp(5): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+c:\users\vcharatsidis\documents\visual studio 2017\projects\sudoku\sudoku\boarddrawer.cpp(19): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+c:\users\vcharatsidis\documents\visual studio 2017\projects\sudoku\sudoku\main.cpp(7): fatal error C1083: Cannot open include file: 'Box.cpp': No such file or directory
