@@ -1,1 +1,9 @@
-﻿
+﻿  BoardDrawer.cpp
+c:\users\vcharatsidis\documents\visual studio 2017\projects\fast sudoku solver\fast solver\boarddrawer.cpp(1): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+c:\users\vcharatsidis\documents\visual studio 2017\projects\fast sudoku solver\fast solver\boarddrawer.cpp(2): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+c:\users\vcharatsidis\documents\visual studio 2017\projects\fast sudoku solver\fast solver\boarddrawer.cpp(3): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+c:\users\vcharatsidis\documents\visual studio 2017\projects\fast sudoku solver\fast solver\boarddrawer.cpp(4): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+c:\users\vcharatsidis\documents\visual studio 2017\projects\fast sudoku solver\fast solver\boarddrawer.cpp(5): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+c:\users\vcharatsidis\documents\visual studio 2017\projects\fast sudoku solver\fast solver\boarddrawer.cpp(19): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+  fast solver.vcxproj -> C:\Users\vcharatsidis\Documents\Visual Studio 2017\Projects\fast sudoku solver\Debug\fast solver.exe
+  fast solver.vcxproj -> C:\Users\vcharatsidis\Documents\Visual Studio 2017\Projects\fast sudoku solver\Debug\fast solver.pdb (Partial PDB)

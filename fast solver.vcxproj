@@ -111,6 +111,9 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="..\..\Sudoku\Sudoku\Main.cpp" />
+    <ClCompile Include="..\..\Sudoku\Sudoku\SuperHard25x25Sudoku.cpp" />
+    <ClCompile Include="BoardDrawer.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
