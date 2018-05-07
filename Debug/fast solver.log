@@ -10,6 +10,22 @@ c:\users\vcharatsidis\documents\visual studio 2017\projects\fast-sudoku-solver-c
 c:\users\vcharatsidis\documents\visual studio 2017\projects\fast-sudoku-solver-cpp\boarddrawer.cpp(19): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
 c:\users\vcharatsidis\documents\visual studio 2017\projects\fast-sudoku-solver-cpp\main.cpp(5): warning C4067: unexpected tokens following preprocessor directive - expected a newline
 c:\users\vcharatsidis\documents\visual studio 2017\projects\fast-sudoku-solver-cpp\main.cpp(6): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+c:\users\vcharatsidis\documents\visual studio 2017\projects\fast-sudoku-solver-cpp\main.cpp(7): warning C4067: unexpected tokens following preprocessor directive - expected a newline
 c:\users\vcharatsidis\documents\visual studio 2017\projects\fast-sudoku-solver-cpp\main.cpp(8): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+c:\users\vcharatsidis\documents\visual studio 2017\projects\fast-sudoku-solver-cpp\main.cpp(9): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+c:\users\vcharatsidis\documents\visual studio 2017\projects\fast-sudoku-solver-cpp\main.cpp(10): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+c:\users\vcharatsidis\documents\visual studio 2017\projects\fast-sudoku-solver-cpp\board.cpp(16): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+c:\users\vcharatsidis\documents\visual studio 2017\projects\fast-sudoku-solver-cpp\board.cpp(18): warning C4018: '<': signed/unsigned mismatch
+c:\users\vcharatsidis\documents\visual studio 2017\projects\fast-sudoku-solver-cpp\board.cpp(20): warning C4018: '<': signed/unsigned mismatch
+c:\users\vcharatsidis\documents\visual studio 2017\projects\fast-sudoku-solver-cpp\board.cpp(47): warning C4018: '<': signed/unsigned mismatch
+c:\users\vcharatsidis\documents\visual studio 2017\projects\fast-sudoku-solver-cpp\board.cpp(54): warning C4018: '<': signed/unsigned mismatch
+  Board.cpp
+c:\users\vcharatsidis\documents\visual studio 2017\projects\fast-sudoku-solver-cpp\board.cpp(16): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+c:\users\vcharatsidis\documents\visual studio 2017\projects\fast-sudoku-solver-cpp\board.cpp(18): warning C4018: '<': signed/unsigned mismatch
+c:\users\vcharatsidis\documents\visual studio 2017\projects\fast-sudoku-solver-cpp\board.cpp(20): warning C4018: '<': signed/unsigned mismatch
+c:\users\vcharatsidis\documents\visual studio 2017\projects\fast-sudoku-solver-cpp\board.cpp(47): warning C4018: '<': signed/unsigned mismatch
+c:\users\vcharatsidis\documents\visual studio 2017\projects\fast-sudoku-solver-cpp\board.cpp(54): warning C4018: '<': signed/unsigned mismatch
+  Generating Code...
+c:\users\vcharatsidis\documents\visual studio 2017\projects\fast-sudoku-solver-cpp\board.cpp(87): warning C4172: returning address of local variable or temporary: coords
   fast solver.vcxproj -> C:\Users\vcharatsidis\Documents\Visual Studio 2017\Projects\Fast-Sudoku-Solver-Cpp\Debug\fast solver.exe
   fast solver.vcxproj -> C:\Users\vcharatsidis\Documents\Visual Studio 2017\Projects\Fast-Sudoku-Solver-Cpp\Debug\fast solver.pdb (Partial PDB)

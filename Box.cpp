@@ -1,6 +1,5 @@
-#include <vector>
-using std::vector;
-
+#ifndef BOX_H
+#define BOX_H
 struct Box {
 public:
 
@@ -16,3 +15,5 @@ public:
 	int value;
 
 };
+
+#endif

@@ -9,5 +9,4 @@ public:
 	int id_x;
 	int id_y;
 
-
 };
