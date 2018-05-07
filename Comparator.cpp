@@ -5,19 +5,14 @@ public:
 	Comparator(){
 
 	}
-	Box* operator() (Box* a, Box* b) {
-		long values_a = a->available_values;
-		long values_b = b->available_values;
+	bool operator() (Box& a, Box& b) {
+		long values_a = a.available_values;
+		long values_b = b.available_values;
 
-		int non_zero_values_a = available_values(values_a);
-		int non_zero_values_b = available_values(values_b);
+		int zv_a = available_values(values_a);
+		int zv_b = available_values(values_b);
 
-		if (non_zero_values_a > non_zero_values_b) {
-			return a;
-		}
-		else {
-			return b;
-		}
+		return zv_a < zv_b;
 	}
 
 private:
