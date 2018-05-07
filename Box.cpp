@@ -7,9 +7,13 @@ public:
 	const vector<Box*> column_boxes;
 	const vector<Box*> container_boxes;
 
-	const int row;
-	const int column;
+	int row;
+	int column;
 
 	long available_values;
 	long value;
+
+	Box() {
+
+	}
 };

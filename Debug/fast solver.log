@@ -1,11 +1,51 @@
 ﻿  Main.cpp
-c:\users\vcharatsidis\documents\visual studio 2017\projects\sudoku\sudoku\main.cpp(5): warning C4067: unexpected tokens following preprocessor directive - expected a newline
-c:\users\vcharatsidis\documents\visual studio 2017\projects\sudoku\sudoku\superhard25x25sudoku.cpp(1): warning C4067: unexpected tokens following preprocessor directive - expected a newline
-c:\users\vcharatsidis\documents\visual studio 2017\projects\sudoku\sudoku\main.cpp(6): warning C4067: unexpected tokens following preprocessor directive - expected a newline
-c:\users\vcharatsidis\documents\visual studio 2017\projects\sudoku\sudoku\boarddrawer.cpp(1): warning C4067: unexpected tokens following preprocessor directive - expected a newline
-c:\users\vcharatsidis\documents\visual studio 2017\projects\sudoku\sudoku\boarddrawer.cpp(2): warning C4067: unexpected tokens following preprocessor directive - expected a newline
-c:\users\vcharatsidis\documents\visual studio 2017\projects\sudoku\sudoku\boarddrawer.cpp(3): warning C4067: unexpected tokens following preprocessor directive - expected a newline
-c:\users\vcharatsidis\documents\visual studio 2017\projects\sudoku\sudoku\boarddrawer.cpp(4): warning C4067: unexpected tokens following preprocessor directive - expected a newline
-c:\users\vcharatsidis\documents\visual studio 2017\projects\sudoku\sudoku\boarddrawer.cpp(5): warning C4067: unexpected tokens following preprocessor directive - expected a newline
-c:\users\vcharatsidis\documents\visual studio 2017\projects\sudoku\sudoku\boarddrawer.cpp(19): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
-c:\users\vcharatsidis\documents\visual studio 2017\projects\sudoku\sudoku\main.cpp(7): fatal error C1083: Cannot open include file: 'Box.cpp': No such file or directory
+c:\users\vcharatsidis\documents\visual studio 2017\projects\fast-sudoku-solver-cpp\main.cpp(2): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+c:\users\vcharatsidis\documents\visual studio 2017\projects\fast-sudoku-solver-cpp\sudoku25x25.cpp(1): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+c:\users\vcharatsidis\documents\visual studio 2017\projects\fast-sudoku-solver-cpp\main.cpp(4): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+c:\users\vcharatsidis\documents\visual studio 2017\projects\fast-sudoku-solver-cpp\boarddrawer.cpp(1): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+c:\users\vcharatsidis\documents\visual studio 2017\projects\fast-sudoku-solver-cpp\boarddrawer.cpp(2): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+c:\users\vcharatsidis\documents\visual studio 2017\projects\fast-sudoku-solver-cpp\boarddrawer.cpp(3): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+c:\users\vcharatsidis\documents\visual studio 2017\projects\fast-sudoku-solver-cpp\boarddrawer.cpp(4): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+c:\users\vcharatsidis\documents\visual studio 2017\projects\fast-sudoku-solver-cpp\boarddrawer.cpp(5): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+c:\users\vcharatsidis\documents\visual studio 2017\projects\fast-sudoku-solver-cpp\boarddrawer.cpp(19): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+c:\users\vcharatsidis\documents\visual studio 2017\projects\fast-sudoku-solver-cpp\main.cpp(5): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+c:\users\vcharatsidis\documents\visual studio 2017\projects\fast-sudoku-solver-cpp\main.cpp(6): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+c:\users\vcharatsidis\documents\visual studio 2017\projects\fast-sudoku-solver-cpp\main.cpp(8): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+c:\program files (x86)\microsoft visual studio\2017\community\vc\tools\msvc\14.10.25017\include\algorithm(2202): error C2280: 'Box &Box::operator =(const Box &)': attempting to reference a deleted function
+  c:\users\vcharatsidis\documents\visual studio 2017\projects\fast-sudoku-solver-cpp\box.cpp(19): note: compiler has generated 'Box::operator =' here
+  c:\program files (x86)\microsoft visual studio\2017\community\vc\tools\msvc\14.10.25017\include\algorithm(2216): note: see reference to function template instantiation 'void std::_Pop_heap_hole_unchecked<_RanIt,Box,_Pr>(_RanIt,_RanIt,_RanIt,_Ty &&,_Pr &)' being compiled
+          with
+          [
+              _RanIt=Box *,
+              _Pr=Comparator,
+              _Ty=Box
+          ]
+  c:\program files (x86)\microsoft visual studio\2017\community\vc\tools\msvc\14.10.25017\include\algorithm(2226): note: see reference to function template instantiation 'void std::_Pop_heap_unchecked<Box*,_Pr>(_RanIt,_RanIt,_Pr &)' being compiled
+          with
+          [
+              _Pr=Comparator,
+              _RanIt=Box *
+          ]
+  c:\program files (x86)\microsoft visual studio\2017\community\vc\tools\msvc\14.10.25017\include\queue(370): note: see reference to function template instantiation 'void std::pop_heap<std::_Vector_iterator<std::_Vector_val<std::_Simple_types<Box>>>,_Pr>(_RanIt,_RanIt,_Pr)' being compiled
+          with
+          [
+              _Pr=Comparator,
+              _RanIt=std::_Vector_iterator<std::_Vector_val<std::_Simple_types<Box>>>
+          ]
+  c:\program files (x86)\microsoft visual studio\2017\community\vc\tools\msvc\14.10.25017\include\queue(369): note: while compiling class template member function 'void std::priority_queue<Box,std::vector<Box,std::allocator<_Ty>>,Comparator>::pop(void)'
+          with
+          [
+              _Ty=Box
+          ]
+  c:\users\vcharatsidis\documents\visual studio 2017\projects\fast-sudoku-solver-cpp\main.cpp(46): note: see reference to function template instantiation 'void std::priority_queue<Box,std::vector<Box,std::allocator<_Ty>>,Comparator>::pop(void)' being compiled
+          with
+          [
+              _Ty=Box
+          ]
+  c:\users\vcharatsidis\documents\visual studio 2017\projects\fast-sudoku-solver-cpp\main.cpp(26): note: see reference to class template instantiation 'std::priority_queue<Box,std::vector<Box,std::allocator<_Ty>>,Comparator>' being compiled
+          with
+          [
+              _Ty=Box
+          ]
+  c:\users\vcharatsidis\documents\visual studio 2017\projects\fast-sudoku-solver-cpp\box.cpp(19): note: 'Box &Box::operator =(const Box &)': function was implicitly deleted because a data member 'Box::container_boxes' has either no appropriate copy assignment operator or overload resolution was ambiguous
+  c:\users\vcharatsidis\documents\visual studio 2017\projects\fast-sudoku-solver-cpp\box.cpp(8): note: see declaration of 'Box::container_boxes'

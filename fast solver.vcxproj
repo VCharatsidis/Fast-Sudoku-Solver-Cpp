@@ -111,8 +111,6 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="..\..\Sudoku\Sudoku\Main.cpp" />
-    <ClCompile Include="..\..\Sudoku\Sudoku\SuperHard25x25Sudoku.cpp" />
     <ClCompile Include="BoardDrawer.cpp" />
     <ClCompile Include="Box.cpp">
       <DeploymentContent>true</DeploymentContent>
@@ -122,7 +120,9 @@
     <ClCompile Include="Comparator.cpp" />
     <ClCompile Include="Container.cpp" />
     <ClCompile Include="Fast_Solver.cpp" />
+    <ClCompile Include="Main.cpp" />
     <ClCompile Include="Row.cpp" />
+    <ClCompile Include="Sudoku25x25.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

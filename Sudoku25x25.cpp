@@ -105,7 +105,7 @@ public:
 		hardestSudoku[23][21] = 24;
 
 		//hardestSudoku[24] is empty.
-		
+
 		return hardestSudoku;
 	}
 };
