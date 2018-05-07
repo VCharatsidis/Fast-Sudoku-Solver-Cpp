@@ -49,3 +49,5 @@ c:\program files (x86)\microsoft visual studio\2017\community\vc\tools\msvc\14.1
           ]
   c:\users\vcharatsidis\documents\visual studio 2017\projects\fast-sudoku-solver-cpp\box.cpp(19): note: 'Box &Box::operator =(const Box &)': function was implicitly deleted because a data member 'Box::container_boxes' has either no appropriate copy assignment operator or overload resolution was ambiguous
   c:\users\vcharatsidis\documents\visual studio 2017\projects\fast-sudoku-solver-cpp\box.cpp(8): note: see declaration of 'Box::container_boxes'
+  Comparator.cpp
+  Generating Code...
