@@ -6,8 +6,8 @@ using std::unordered_map;
 
 class Box_Structure {
 public:
-	const vector<Box*> boxes;
-	unordered_map<int, vector<Box*>> boxes_per_value;
+	vector<Box*> boxes;
+	unordered_map<int, long> boxes_per_value;
 	int id;
 
 	void update() {
