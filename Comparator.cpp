@@ -16,7 +16,7 @@ private:
 
 		for (size_t i = 0; i < CHAR_BIT * sizeof available_values; ++i)
 		{
-			if ((available_values & (1 << i)) == 1)
+			if ((available_values & (1 << i)) == 0)
 				++num_zeroes;
 		}
 

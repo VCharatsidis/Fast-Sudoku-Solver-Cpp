@@ -3,9 +3,15 @@ using std::vector;
 
 struct Box {
 public:
-	const vector<Box*> row_boxes;
-	const vector<Box*> column_boxes;
-	const vector<Box*> container_boxes;
+
+	Box(int i, int j) {
+		row = i;
+		column = j;
+	}
+
+    vector<Box*> row_boxes;
+	vector<Box*> column_boxes;
+	vector<Box*> container_boxes;
 
 	int row;
 	int column;
@@ -13,7 +19,4 @@ public:
 	long available_values;
 	long value;
 
-	Box() {
-
-	}
 };
