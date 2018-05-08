@@ -30,16 +30,9 @@ public:
 		container_size = sqrt(b.size());
 
 		rows.reserve(board_size);
-
-		for (int row = 0; row < board_size; row++) {
-			Box_Structure* row_structure = new Row();
-
-			for (int value = 1; value < board_size + 1; value++) {
-				row_structure->boxes_per_value.insert({ value, 0 });
-			}
-
-			rows.push_back(row_structure);
-		}
+		make_rows();
+		make_columns();
+		make_containers();
 
 		for (int row = 0; row < board_size; row++) {
 			vector<Box*> current;
@@ -52,11 +45,68 @@ public:
 			boxes.push_back(current);
 		}
 
+		for (int column = 0; column < board_size; column++) {
+			vector<Box*> current;
+
+			for (int row = 0; row < board_size; row++) {
+				current.push_back(rows[row]->boxes[column]);
+			}
+
+			columns[column]->boxes = current;
+		}
+
+		/*for (int row = 0; row < board_size; row++) {
+			for (int column = 0; column < board_size; column++) {
+				int* container_coords = find_container_starting_box(row, column);
+
+			}
+		}*/
+
 		for (int row = 0; row < board_size; row++) {
 			fill_boxes_per_value(rows[row]);
 		}
 
+		for (int column = 0; column < board_size; column++) {
+			fill_boxes_per_value(columns[column]);
+		}
+
 		create_box_structures();
+	}
+
+	void make_rows() {
+		for (int row = 0; row < board_size; row++) {
+			Box_Structure* row_structure = new Row();
+
+			for (int value = 1; value < board_size + 1; value++) {
+				row_structure->boxes_per_value.insert({ value, 0 });
+			}
+
+			rows.push_back(row_structure);
+		}
+	}
+
+	void make_columns() {
+		for (int column = 0; column < board_size; column++) {
+			Box_Structure* column_structure = new Column();
+
+			for (int value = 1; value < board_size + 1; value++) {
+				column_structure->boxes_per_value.insert({ value, 0 });
+			}
+
+			columns.push_back(column_structure);
+		}
+	}
+
+	void make_containers() {
+		for (int container = 0; container < board_size; container++) {
+			Box_Structure* container_structure = new Container();
+
+			for (int value = 1; value < board_size + 1; value++) {
+				container_structure->boxes_per_value.insert({ value, 0 });
+			}
+
+			containers.push_back(container_structure);
+		}
 	}
 
 	void create_box_structures() {
