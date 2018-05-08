@@ -20,6 +20,7 @@ void print_values(const long values) {
 			cout <<"av values "+ std::to_string(i) +" " ;
 		}
 	}
+	cout << "" << std::endl;
 }
 
 int main() {
@@ -57,10 +58,23 @@ int main() {
 	}
 
 	Board board = Board(hardestSudoku);
-	long av_values = board.boxes[10][10]->available_values;
+	long av_values = board.boxes[20][10]->available_values;
+	int val = board.boxes[20][10]->value;
 
 	cout <<  std::bitset<26>(av_values) << std::endl;
+	cout << "value "+std::to_string(val) << std::endl;
 	print_values(av_values);
 
+	//Test box structures
+	cout << "Test box structures " << std::endl;
+	cout << std::to_string(board.rows.size()) << std::endl;
+	for (int i = 0; i < board.rows.size(); i++) {
+		cout << "row " + std::to_string(i)<< std::endl;
+		for (int j = 1; j <  board.rows.size() + 1; j++) {
+			cout << "value " + std::to_string(j) +" ";
+			cout << std::bitset<25>(board.rows[i]->boxes_per_value.at(j)) << std::endl; 
+		}
+	}
+	cout << " " << std::endl;
 	return 0;
 };
