@@ -5,7 +5,12 @@ c:\users\vcharatsidis\documents\visual studio 2017\projects\fast-sudoku-solver-c
 c:\users\vcharatsidis\documents\visual studio 2017\projects\fast-sudoku-solver-cpp\column.cpp(1): warning C4067: unexpected tokens following preprocessor directive - expected a newline
 c:\users\vcharatsidis\documents\visual studio 2017\projects\fast-sudoku-solver-cpp\board.cpp(8): warning C4067: unexpected tokens following preprocessor directive - expected a newline
 c:\users\vcharatsidis\documents\visual studio 2017\projects\fast-sudoku-solver-cpp\container.cpp(1): warning C4067: unexpected tokens following preprocessor directive - expected a newline
-c:\users\vcharatsidis\documents\visual studio 2017\projects\fast-sudoku-solver-cpp\board.cpp(10): warning C4067: unexpected tokens following preprocessor directive - expected a newline
-c:\users\vcharatsidis\documents\visual studio 2017\projects\fast-sudoku-solver-cpp\board.cpp(30): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+c:\users\vcharatsidis\documents\visual studio 2017\projects\fast-sudoku-solver-cpp\board.cpp(11): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+c:\users\vcharatsidis\documents\visual studio 2017\projects\fast-sudoku-solver-cpp\board.cpp(12): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+c:\users\vcharatsidis\documents\visual studio 2017\projects\fast-sudoku-solver-cpp\board.cpp(13): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+c:\users\vcharatsidis\documents\visual studio 2017\projects\fast-sudoku-solver-cpp\board.cpp(34): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+c:\users\vcharatsidis\documents\visual studio 2017\projects\fast-sudoku-solver-cpp\board.cpp(213): warning C4554: '<<': check operator precedence for possible error; use parentheses to clarify precedence
+c:\users\vcharatsidis\documents\visual studio 2017\projects\fast-sudoku-solver-cpp\board.cpp(220): warning C4554: '<<': check operator precedence for possible error; use parentheses to clarify precedence
+c:\users\vcharatsidis\documents\visual studio 2017\projects\fast-sudoku-solver-cpp\board.cpp(234): warning C4554: '<<': check operator precedence for possible error; use parentheses to clarify precedence
   fast solver.vcxproj -> C:\Users\vcharatsidis\Documents\Visual Studio 2017\Projects\Fast-Sudoku-Solver-Cpp\Debug\fast solver.exe
   fast solver.vcxproj -> C:\Users\vcharatsidis\Documents\Visual Studio 2017\Projects\Fast-Sudoku-Solver-Cpp\Debug\fast solver.pdb (Partial PDB)

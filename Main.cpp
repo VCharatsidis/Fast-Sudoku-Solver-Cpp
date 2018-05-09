@@ -34,17 +34,17 @@ int main() {
 	drawer->draw_board(hardestSudoku);
 
 	//check solver
-	priority_queue<Box, vector<Box>, Comparator> pq;
+	priority_queue<Box*, vector<Box*>, Comparator> pq;
 
-	Box a = Box(1,2);
-	Box b = Box(2,3);
-	Box c = Box(3,4);
-	Box d = Box(4,5);
+	Box* a = new Box(1,2);
+	Box* b = new Box(2,3);
+	Box* c = new Box(3,4);
+	Box* d = new Box(4,5);
 
-	a.available_values = 0b1011;
-	b.available_values = 0b100000000000000000001;
-	c.available_values = 0b1111;
-	d.available_values = 0b1;
+	a->available_values = 0b1011;
+	b->available_values = 0b100000000000000000001;
+	c->available_values = 0b1111;
+	d->available_values = 0b1;
 
 	pq.push(a);
 	pq.push(b);
@@ -52,8 +52,8 @@ int main() {
 	pq.push(d);
 
 	while (!pq.empty()) {
-		Box k = pq.top();
-		cout << std::bitset<25>(k.available_values) << std::endl;
+		Box* k = pq.top();
+		cout << std::bitset<25>(k->available_values) << std::endl;
 		pq.pop();
 	}
 
@@ -100,6 +100,14 @@ int main() {
 		}
 	}
 	cout << " " << std::endl;
+
+	//Test priority queue
+	while (!board.most_constraint_box.empty()) {
+		Box* k = board.most_constraint_box.top();
+		cout << "Box: " + std::to_string(k->row) + "," + std::to_string(k->column) << std::endl;
+		cout << std::bitset<25>(k->available_values) << std::endl;
+		board.most_constraint_box.pop();
+	}
 
 	return 0;
 };

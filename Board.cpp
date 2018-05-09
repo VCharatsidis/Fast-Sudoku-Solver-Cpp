@@ -7,14 +7,18 @@
 #include "Column.cpp";
 #include "Container.cpp";
 #include <iostream>
+
 #include <bitset>;
+#include <queue>;
+#include "Comparator.cpp";
 
-
+using std::priority_queue;
 using std::vector;
 
 class Board {
 public:
 	vector<vector<Box*>> boxes;
+	priority_queue<Box*, vector<Box*>, Comparator> most_constraint_box;
 	vector<vector<int>> board;
 
 	vector<Box_Structure*> rows;
@@ -52,6 +56,7 @@ public:
 			fill_boxes_per_value(containers[container]);
 		}
 
+		make_most_constraint_box();
 	}
 
 	void fill_row_structure_boxes_and_board_boxes() {
@@ -151,7 +156,7 @@ public:
 					long available_values = structure->structure_boxes[box]->available_values;
 					long value_to_long = 1 << value;
 					long intersection = value_to_long & available_values;
-					bool value_is_not_available = (intersection != 0);
+					bool value_is_not_available = (intersection == 0);
 
 					if (value_is_not_available) {
 						remove_box(structure, value, box);
@@ -200,22 +205,23 @@ public:
 		int row = box->row;
 		int column = box->column;
 
-		long values = 0b0000000000000000000000000;
+		long constrained_values = 0b000000000000000000000000;
 
+		//row constraints
 		for (int col = 0; col < board_size; col++) {
 			if (board[row][col] != 0) {
-				long v = 1 << board[row][col];
-				values |= v;
+				long v = 1 << board[row][col]-1;
+				constrained_values |= v;
 			}
 		}
-
+		//column constraints;
 		for (int r = 0; r < board_size; r++) {
 			if (board[r][column] != 0) {
-				long v = 1 << board[r][column];
-				values |= v;
+				long v = 1 << board[r][column]-1;
+				constrained_values |= v;
 			}
 		}
-
+		//container constraints
 		int* container_coords = find_container_starting_box(row, column);
 		int start_row = container_coords[0];
 		int start_column = container_coords[1];
@@ -225,13 +231,13 @@ public:
 		for (int r = start_row; r < end_row; r++) {
 			for (int col = start_column; col < end_column; col++) {
 				if (board[r][col] != 0) {
-					long v = 1 << board[r][col];
-					values |= v;
+					long v = 1 << board[r][col]-1;
+					constrained_values |= v;
 				}
 			}
 		}
 
-		box->available_values = values;
+		box->available_values = ~constrained_values;
 	}
 
 	int* find_container_starting_box(int row, int column) {
@@ -243,6 +249,14 @@ public:
 
 		int coords[] = { starting_box_x, starting_box_y };
 		return coords;
+	}
+
+	void make_most_constraint_box() {
+		for (int row = 0; row < board_size; row++) {
+			for (int column = 0; column < board_size; column++) {
+				most_constraint_box.push(boxes[row][column]);
+			}
+		}
 	}
 };
 

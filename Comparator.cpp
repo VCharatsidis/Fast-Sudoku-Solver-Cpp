@@ -1,12 +1,14 @@
+#ifndef COMPARATOR_H
+#define COMPARATOR_H
 #include "Box.cpp"
 #include <vector>
 
 class Comparator {
 public:
 	
-	bool operator() (const Box& a, const Box& b) const {
-		int zv_a = available_values(a.available_values);
-		int zv_b = available_values(b.available_values);
+	bool operator() (const Box* a, const Box* b) const {
+		int zv_a = available_values(a->available_values);
+		int zv_b = available_values(b->available_values);
 
 		return zv_a < zv_b;
 	}
@@ -24,3 +26,5 @@ private:
 		return num_zeroes;
 	}
 };
+
+#endif

@@ -13,7 +13,6 @@ public:
 
 	long available_values;
 	int value;
-
 };
 
 #endif
