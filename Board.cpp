@@ -34,43 +34,53 @@ public:
 		make_columns();
 		make_containers();
 
-		for (int row = 0; row < board_size; row++) {
-			vector<Box*> current;
+		fill_row_structure_boxes_and_board_boxes();
 
-			for (int column = 0; column < board_size; column++) {
-				current.push_back(create_box(row, column, b[row][column]));
-			}
-
-			rows[row]->boxes = current;
-			boxes.push_back(current);
-		}
-
-		for (int column = 0; column < board_size; column++) {
-			vector<Box*> current;
-
-			for (int row = 0; row < board_size; row++) {
-				current.push_back(rows[row]->boxes[column]);
-			}
-
-			columns[column]->boxes = current;
-		}
-
-		/*for (int row = 0; row < board_size; row++) {
-			for (int column = 0; column < board_size; column++) {
-				int* container_coords = find_container_starting_box(row, column);
-
-			}
-		}*/
+		fill_column_structure_boxes();
+		fill_container_structure_boxes();
 
 		for (int row = 0; row < board_size; row++) {
 			fill_boxes_per_value(rows[row]);
 		}
 
+		//Test rows
+		std::cout << "Test box structures " << std::endl;
+		std::cout << std::to_string(rows.size()) << std::endl;
+		for (int i = 0; i < rows.size(); i++) {
+			std::cout << "row " + std::to_string(i) << std::endl;
+			for (int j = 1; j < rows.size() + 1; j++) {
+				std::cout << "value " + std::to_string(j) + " ";
+				std::cout << std::bitset<25>(rows[i]->boxes_per_value.at(j)) << std::endl;
+			}
+		}
+		std::cout << " " << std::endl;
+
 		for (int column = 0; column < board_size; column++) {
 			fill_boxes_per_value(columns[column]);
 		}
 
-		create_box_structures();
+	}
+
+	void fill_row_structure_boxes_and_board_boxes() {
+		for (int row = 0; row < board_size; row++) {
+			vector<Box*> current;
+
+			for (int column = 0; column < board_size; column++) {
+				current.push_back(create_box(row, column, board[row][column]));
+			}
+
+			rows[row]->structure_boxes = current;
+			boxes.push_back(current);
+		}
+	}
+
+	void fill_container_structure_boxes() {
+		/*for (int row = 0; row < board_size; row++) {
+		for (int column = 0; column < board_size; column++) {
+		int* container_coords = find_container_starting_box(row, column);
+
+		}
+		}*/
 	}
 
 	void make_rows() {
@@ -78,11 +88,12 @@ public:
 			Box_Structure* row_structure = new Row();
 
 			for (int value = 1; value < board_size + 1; value++) {
-				row_structure->boxes_per_value.insert({ value, 0 });
+				row_structure->boxes_per_value.insert({ value,  0b1111111111111111111111111 });
 			}
 
 			rows.push_back(row_structure);
 		}
+		
 	}
 
 	void make_columns() {
@@ -90,7 +101,7 @@ public:
 			Box_Structure* column_structure = new Column();
 
 			for (int value = 1; value < board_size + 1; value++) {
-				column_structure->boxes_per_value.insert({ value, 0 });
+				column_structure->boxes_per_value.insert({ value, 0b1111111111111111111111111 });
 			}
 
 			columns.push_back(column_structure);
@@ -102,50 +113,60 @@ public:
 			Box_Structure* container_structure = new Container();
 
 			for (int value = 1; value < board_size + 1; value++) {
-				container_structure->boxes_per_value.insert({ value, 0 });
+				container_structure->boxes_per_value.insert({ value,  0b1111111111111111111111111 });
 			}
 
 			containers.push_back(container_structure);
 		}
 	}
 
-	void create_box_structures() {
-		//create_row_structures();
-		//create_column_structures();
-		//create_container_structures();
+	void fill_column_structure_boxes() {
+		for (int column = 0; column < board_size; column++) {
+			vector<Box*> current;
+
+			for (int row = 0; row < board_size; row++) {
+				current.push_back(rows[row]->structure_boxes[column]);
+			}
+
+			columns[column]->structure_boxes = current;
+		}
 	}
 
 	void fill_boxes_per_value(Box_Structure* structure) {
-		for (int box = 0; box < board_size; box++) {
-			int box_value = structure->boxes[box]->value;
+		for (int box = board_size-1; box >= 0; box--) {
+			int box_value = structure->structure_boxes[box]->value;
 
 			if (box_value == 0) {
-				long available_values = structure->boxes[box]->available_values;
-				/*std::cout << "inside " << std::endl;
-				std::cout << std::to_string(box) << std::endl;
-				std::cout << std::bitset<26>(available_values) << std::endl;*/
+				structure->boxes_per_value[box_value] = 0b0000000000000000000000000;
+			}
 
-				for (int value = 1; value < board_size + 1; value++) {
+			for (int value = 1; value < board_size + 1; value++) {
+				if (box_value == 0) {
+					long available_values = structure->structure_boxes[box]->available_values;
 					long value_to_long = 1 << value;
-					/*std::cout << "inside " << std::endl;
-					std::cout << std::bitset<26>(available_values) << std::endl;
-					std::cout << std::bitset<26>(value_to_long) << std::endl;
-					std::cout<< std::bitset<26>(value_to_long & available_values) << std::endl;
-					std::cout << std::to_string(value_to_long & available_values != 0);*/
-					 
-					if ((value_to_long & available_values) != 0) {
-						long av_boxes = structure->boxes_per_value.at(value);
-						long box_to_long = 1 << box;
-						//std::cout << "inside the if " << std::endl;
+					long intersection = value_to_long & available_values;
+					bool value_is_not_available = (intersection != 0);
 
-						structure->boxes_per_value[value] = av_boxes | box_to_long;
+					if (value_is_not_available) {
+						remove_box(structure, value, box);
 					}
+					
+				}
+				else {
+					remove_box(structure, value, box);
 				}
 			}
-			else {
-				structure->boxes_per_value[box_value] = 0b1111111111111111111111111;
-			}
+			
 		}
+		
+	}
+
+	void remove_box(Box_Structure* structure, int value, int box) {
+		long av_boxes = structure->boxes_per_value.at(value);
+		long box_to_long = 1 << box;
+
+		//std::cout << std::bitset<26>(av_boxes & ~box_to_long) << std::endl;
+		structure->boxes_per_value[value] = av_boxes & ~box_to_long;
 	}
 
 	//void create_row_structures() {
