@@ -37,26 +37,19 @@ public:
 		fill_row_structure_boxes_and_board_boxes();
 
 		fill_column_structure_boxes();
-		fill_container_structure_boxes();
-
+		
 		for (int row = 0; row < board_size; row++) {
 			fill_boxes_per_value(rows[row]);
 		}
 
-		//Test rows
-		std::cout << "Test box structures " << std::endl;
-		std::cout << std::to_string(rows.size()) << std::endl;
-		for (int i = 0; i < rows.size(); i++) {
-			std::cout << "row " + std::to_string(i) << std::endl;
-			for (int j = 1; j < rows.size() + 1; j++) {
-				std::cout << "value " + std::to_string(j) + " ";
-				std::cout << std::bitset<25>(rows[i]->boxes_per_value.at(j)) << std::endl;
-			}
-		}
-		std::cout << " " << std::endl;
-
 		for (int column = 0; column < board_size; column++) {
 			fill_boxes_per_value(columns[column]);
+		}
+
+		fill_container_structure_boxes();
+
+		for (int container = 0; container < board_size; container++) {
+			fill_boxes_per_value(containers[container]);
 		}
 
 	}
@@ -72,15 +65,6 @@ public:
 			rows[row]->structure_boxes = current;
 			boxes.push_back(current);
 		}
-	}
-
-	void fill_container_structure_boxes() {
-		/*for (int row = 0; row < board_size; row++) {
-		for (int column = 0; column < board_size; column++) {
-		int* container_coords = find_container_starting_box(row, column);
-
-		}
-		}*/
 	}
 
 	void make_rows() {
@@ -132,6 +116,28 @@ public:
 		}
 	}
 
+	void fill_container_structure_boxes() {
+		int container_counter = 0;
+
+		for (int container_x = 0; container_x < board_size; container_x += container_size) {
+			for (int container_y = 0; container_y < board_size; container_y += container_size) {
+				vector<Box*> current;
+
+				int end_row = container_x + container_size;
+				int end_column = container_y + container_size;
+
+				for (int row = container_x; row < end_row; row++) {
+					for (int column = container_y; column < end_column; column++) {
+						current.push_back(rows[row]->structure_boxes[column]);
+					}
+				}
+
+				containers[container_counter]->structure_boxes = current;
+				container_counter++;
+			}
+		}
+	}
+
 	void fill_boxes_per_value(Box_Structure* structure) {
 		for (int box = board_size-1; box >= 0; box--) {
 			int box_value = structure->structure_boxes[box]->value;
@@ -155,106 +161,16 @@ public:
 				else {
 					remove_box(structure, value, box);
 				}
-			}
-			
+			}	
 		}
-		
 	}
 
 	void remove_box(Box_Structure* structure, int value, int box) {
 		long av_boxes = structure->boxes_per_value.at(value);
 		long box_to_long = 1 << box;
 
-		//std::cout << std::bitset<26>(av_boxes & ~box_to_long) << std::endl;
 		structure->boxes_per_value[value] = av_boxes & ~box_to_long;
 	}
-
-	//void create_row_structures() {
-	//	
-	//	for (int row = 0; row < board_size; row++) {
-	//		Box_Structure* row_structure = new Row();
-	//		
-	//		for (int value = 1; value < board_size + 1; value++) {
-	//			row_structure->boxes_per_value.insert({ value, 0 });
-	//		}
-	//		
-	//		for (int col = 0; col < board_size; col++) {
-	//			long box_av_values = boxes[col][row]->available_values;
-
-	//			for (int value = 1; value < board_size + 1; value++) {
-	//				long value_to_binary_long = 1 << value;
-	//				/*std::cout << "inside " << std::endl;
-	//				std::cout << std::bitset<26>(box_av_values) << std::endl;
-	//				std::cout << std::bitset<26>(value_to_binary_long) << std::endl;
-	//				std::cout<< std::bitset<26>(box_av_values & value_to_binary_long) << std::endl;
-	//				std::cout << std::to_string(box_av_values & value_to_binary_long != 0);*/
-	//				
-	//				if ((box_av_values & value_to_binary_long) != 0) {
-	//					
-	//					long boxes = row_structure->boxes_per_value.at(value);
-	//					long box_column = 1 << col;
-	//					long updated_boxes = boxes | box_column;
-	//					//std::cout << std::bitset<26>(box_av_values & value_to_binary_long) << std::endl;
-	//					row_structure->boxes_per_value[value] = updated_boxes;
-	//				}
-	//			}
-	//			
-	//		}
-
-	//		rows.push_back(row_structure);
-	//	}
-	//}
-
-	/*void create_column_structures() {
-
-		for (int column = 0; column < board_size; column++) {
-			Box_Structure* column_structure = new Column();
-
-			for (int val = 1; val < board_size + 1; val++) {
-				column_structure->boxes_per_value.insert(val, 0);
-			}
-
-			for (int row = 0; row < board_size; row++) {
-				int value = board[row][column];
-				long boxes = column_structure->boxes_per_value.at(value);
-				long value_to_binary_long = 1 << value;
-				long updated_boxes = boxes | value_to_binary_long;
-
-				column_structure->boxes_per_value[value] = updated_boxes;
-			}
-
-			columns[column] = column_structure;
-		}
-	}*/
-
-	/*void create_container_structures() {
-
-		for (int container = 0; container < board_size; container++) {
-			Box_Structure* container_structure = new Container();
-
-			for (int val = 1; val < board_size + 1; val++) {
-				container_structure->boxes_per_value.insert(val, 0);
-			}
-
-			int start_row = container / container_size;
-			int start_col = container / container_size;
-			int end_row = start_row + container_size;
-			int end_col = start_col + container_size;
-
-			for (int row = start_row; row < end_row; row++) {
-				for (int column = start_col; column < end_col; column++) {
-					int value = board[row][column];
-					long boxes = container_structure->boxes_per_value.at(value);
-					long value_to_binary_long = 1 << value;
-					long updated_boxes = boxes | value_to_binary_long;
-
-					container_structure->boxes_per_value[value] = updated_boxes;
-				}
-			}
-
-			containers[container] = container_structure;
-		}
-	}*/
 
 	void update_boxes(Box_Structure* structure, int value) {
 		long boxes = structure->boxes_per_value.at(value);

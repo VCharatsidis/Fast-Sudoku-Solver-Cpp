@@ -89,5 +89,17 @@ int main() {
 	}
 	cout << " " << std::endl;
 
+	//Test container structures
+	cout << "Test container structures " << std::endl;
+	cout << std::to_string(board.columns.size()) << std::endl;
+	for (int i = 0; i < board.containers.size(); i++) {
+		cout << "container " + std::to_string(i) << std::endl;
+		for (int j = 1; j < board.containers.size() + 1; j++) {
+			cout << "value " + std::to_string(j) + " ";
+			cout << std::bitset<25>(board.containers[i]->boxes_per_value.at(j)) << std::endl;
+		}
+	}
+	cout << " " << std::endl;
+
 	return 0;
 };
