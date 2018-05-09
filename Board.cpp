@@ -7,6 +7,8 @@
 #include "Column.cpp";
 #include "Container.cpp";
 #include <iostream>
+#include "Move.cpp";
+#include <stack>;
 
 #include <bitset>;
 #include <queue>;
@@ -20,6 +22,7 @@ public:
 	vector<vector<Box*>> boxes;
 	priority_queue<Box*, vector<Box*>, Comparator> most_constraint_box;
 	vector<vector<int>> board;
+	std::stack<Move*> moves_done;
 
 	vector<Box_Structure*> rows;
 	vector<Box_Structure*> columns;
@@ -27,6 +30,7 @@ public:
 
 	int container_size;
 	int board_size;
+	int starting_number_of_empty_squares;
 
 	Board(vector<vector<int>> b) {
 		board = b;
@@ -194,6 +198,7 @@ public:
 			update_available_values(box);
 		}
 		else {
+			starting_number_of_empty_squares++;
 			box->value = value;
 			box->available_values = 0;
 		}
@@ -258,6 +263,24 @@ public:
 			}
 		}
 	}
+
+	bool game_over() {
+		int moves_played = moves_done.size();
+		bool game_over = (moves_played == starting_number_of_empty_squares);
+
+		if (game_over) {
+			return true;
+		}
+		else {
+			return false;
+		}
+	}
+
+	void play_move(Move* move) {
+		int value = move->value;
+		moves_done.push(move);
+	}
+
 };
 
 #endif
