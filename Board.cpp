@@ -6,7 +6,7 @@
 #include "Row.cpp";
 #include "Column.cpp";
 #include "Container.cpp";
-#include <iostream>
+
 #include "Move.cpp";
 #include <stack>;
 
@@ -22,7 +22,7 @@ public:
 	vector<vector<Box*>> boxes;
 	priority_queue<Box*, vector<Box*>, Comparator> most_constraint_box;
 	vector<vector<int>> board;
-	std::stack<Move*> moves_done;
+	std::stack<Box*> moves_done;
 
 	vector<Box_Structure*> rows;
 	vector<Box_Structure*> columns;
@@ -189,7 +189,6 @@ public:
 		structure->boxes_per_value[value] = updated_boxes;
 	}
 
-
 	Box* create_box(int row, int column, int value) {
 		Box* box = new Box(row, column);
 
@@ -215,14 +214,14 @@ public:
 		//row constraints
 		for (int col = 0; col < board_size; col++) {
 			if (board[row][col] != 0) {
-				long v = 1 << board[row][col]-1;
+				long v = 1 << board[row][col];
 				constrained_values |= v;
 			}
 		}
 		//column constraints;
 		for (int r = 0; r < board_size; r++) {
 			if (board[r][column] != 0) {
-				long v = 1 << board[r][column]-1;
+				long v = 1 << board[r][column];
 				constrained_values |= v;
 			}
 		}
@@ -236,12 +235,12 @@ public:
 		for (int r = start_row; r < end_row; r++) {
 			for (int col = start_column; col < end_column; col++) {
 				if (board[r][col] != 0) {
-					long v = 1 << board[r][col]-1;
+					long v = 1 << board[r][col];
 					constrained_values |= v;
 				}
 			}
 		}
-
+		
 		box->available_values = ~constrained_values;
 	}
 
@@ -257,16 +256,19 @@ public:
 	}
 
 	void make_most_constraint_box() {
+		most_constraint_box = priority_queue<Box*, vector<Box*>, Comparator>();
 		for (int row = 0; row < board_size; row++) {
 			for (int column = 0; column < board_size; column++) {
-				most_constraint_box.push(boxes[row][column]);
+				if (board[row][column] == 0) {
+					most_constraint_box.push(boxes[row][column]);
+				}	
 			}
 		}
 	}
 
 	bool game_over() {
 		int moves_played = moves_done.size();
-		bool game_over = (moves_played == starting_number_of_empty_squares);
+		bool game_over = (moves_played == board_size - starting_number_of_empty_squares);
 
 		if (game_over) {
 			return true;
@@ -276,9 +278,39 @@ public:
 		}
 	}
 
-	void play_move(Move* move) {
-		int value = move->value;
-		moves_done.push(move);
+	void play_move(Box* box) {
+		moves_done.push(box);
+		int box_row = box->row;
+		int box_col = box->column;
+		int value = box->value;
+
+		boxes[box_row][box_col]->value = value;
+		board[box_row][box_col] = value;
+		
+		for (int row = 0; row < board_size; row++) {
+			for (int column = 0; column < board_size; column++) {
+				update_available_values(boxes[row][column]);
+			}
+		}
+
+		make_most_constraint_box();
+
+	}
+
+	void undo_move() {
+		int box_row = moves_done.top()->row;
+		int box_col = moves_done.top()->column;
+		moves_done.pop();
+		boxes[box_row][box_col]->value = 0;
+		board[box_row][box_col] = 0;
+
+		for (int row = 0; row < board_size; row++) {
+			for (int column = 0; column < board_size; column++) {
+				update_available_values(boxes[row][column]);
+			}
+		}
+
+		make_most_constraint_box();
 	}
 
 };

@@ -1,3 +1,5 @@
+#ifndef BOARDDRAWER_H
+#define BOARDDRAWER_H
 #include <array>;
 #include <vector>;
 #include <iostream>;
@@ -61,3 +63,4 @@ public:
 		myfile.close();
 	}
 };
+#endif
