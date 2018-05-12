@@ -6,8 +6,8 @@
 #include "Row.cpp";
 #include "Column.cpp";
 #include "Container.cpp";
+#include <iostream>>
 
-#include "Move.cpp";
 #include <stack>;
 
 #include <bitset>;
@@ -20,9 +20,9 @@ using std::vector;
 class Board {
 public:
 	vector<vector<Box*>> boxes;
-	priority_queue<Box*, vector<Box*>, Comparator> most_constraint_box;
 	vector<vector<int>> board;
 	std::stack<Box*> moves_done;
+	int choises;
 
 	vector<Box_Structure*> rows;
 	vector<Box_Structure*> columns;
@@ -60,7 +60,6 @@ public:
 			fill_boxes_per_value(containers[container]);
 		}
 
-		make_most_constraint_box();
 	}
 
 	void fill_row_structure_boxes_and_board_boxes() {
@@ -255,20 +254,31 @@ public:
 		return coords;
 	}
 
-	void make_most_constraint_box() {
-		most_constraint_box = priority_queue<Box*, vector<Box*>, Comparator>();
+	Box* find_most_constraint_box() {
+		int min = board_size;
+		Box* most_constraint = boxes[0][0];
 		for (int row = 0; row < board_size; row++) {
 			for (int column = 0; column < board_size; column++) {
 				if (board[row][column] == 0) {
-					most_constraint_box.push(boxes[row][column]);
+					long av_values = boxes[row][column]->available_values;
+					int number_of_available_values = number_of_ones(av_values);
+					if (number_of_available_values < min) {
+						min = number_of_available_values;
+						most_constraint = boxes[row][column];
+						if (min == 1) {
+							return most_constraint;
+						}
+					}
 				}	
 			}
 		}
+
+		return most_constraint;
 	}
 
 	bool game_over() {
 		int moves_played = moves_done.size();
-		bool game_over = (moves_played == board_size - starting_number_of_empty_squares);
+		bool game_over = ((board_size*board_size - (moves_played + starting_number_of_empty_squares))==0);
 
 		if (game_over) {
 			return true;
@@ -292,9 +302,6 @@ public:
 				update_available_values(boxes[row][column]);
 			}
 		}
-
-		make_most_constraint_box();
-
 	}
 
 	void undo_move() {
@@ -310,7 +317,18 @@ public:
 			}
 		}
 
-		make_most_constraint_box();
+	}
+
+	int number_of_ones(long available_values) const {
+		size_t num_of_ones = 0;
+
+		for (size_t i = 0; i < CHAR_BIT * sizeof available_values; ++i)
+		{
+			if ((available_values & (1 << i)) != 0)
+				++num_of_ones;
+		}
+
+		return num_of_ones;
 	}
 
 };

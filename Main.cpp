@@ -40,30 +40,6 @@ int main() {
 	move->value = 1;
 	drawboard->play_move(move);
 	drawer->draw_board(drawboard->board);*/
-	
-	//check priority queue
-	priority_queue<Box*, vector<Box*>, Comparator> pq;
-
-	Box* a = new Box(1,2);
-	Box* b = new Box(2,3);
-	Box* c = new Box(3,4);
-	Box* d = new Box(4,5);
-
-	a->available_values = 0b1011;
-	b->available_values = 0b100000000000000000001;
-	c->available_values = 0b1111;
-	d->available_values = 0b1;
-
-	pq.push(a);
-	pq.push(b);
-	pq.push(c);
-	pq.push(d);
-
-	while (!pq.empty()) {
-		Box* k = pq.top();
-		cout << std::bitset<25>(k->available_values) << std::endl;
-		pq.pop();
-	}
 
 	Board board = Board(hardestSudoku);
 	long av_values = board.boxes[20][10]->available_values;
@@ -72,8 +48,6 @@ int main() {
 	cout <<  std::bitset<26>(av_values) << std::endl;
 	cout << "value "+std::to_string(val) << std::endl;
 	print_values(av_values);
-
-	
 
 	////Test row structures
 	//cout << "Test box structures " << std::endl;
@@ -111,14 +85,6 @@ int main() {
 	//}
 	//cout << " " << std::endl;
 
-	//Test priority queue
-	/*while (!board.most_constraint_box.empty()) {
-		Box* k = board.most_constraint_box.top();
-		cout << "Box: " + std::to_string(k->row) + "," + std::to_string(k->column) << std::endl;
-		cout << std::bitset<25>(k->available_values) << std::endl;
-		board.most_constraint_box.pop();
-	}*/
-	//cout << "hi main";
 	//Test solver
 	Board* hardboard = new Board(hardestSudoku);
 	for (int i = 0; i < hardboard->board.size(); i++) {
@@ -127,12 +93,7 @@ int main() {
 			std::cout << std::bitset<25>(hardboard->boxes[i][j]->available_values) << std::endl;
 		}
 	}
-	/*while (!board.most_constraint_box.empty()) {
-		Box* k = board.most_constraint_box.top();
-		cout << "Box: " + std::to_string(k->row) + "," + std::to_string(k->column) << std::endl;
-		cout << std::bitset<25>(k->available_values) << std::endl;
-		board.most_constraint_box.pop();
-	}*/
+
 	Solver* solver = new Solver(hardboard);
 	solver->solve();
 

@@ -120,9 +120,7 @@
     <ClCompile Include="Column.cpp" />
     <ClCompile Include="Comparator.cpp" />
     <ClCompile Include="Container.cpp" />
-    <ClCompile Include="Fast_Solver.cpp" />
     <ClCompile Include="Main.cpp" />
-    <ClCompile Include="Move.cpp" />
     <ClCompile Include="Row.cpp" />
     <ClCompile Include="Solver.cpp" />
     <ClCompile Include="Sudoku25x25.cpp" />

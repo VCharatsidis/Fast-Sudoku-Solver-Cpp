@@ -1,4 +1,0 @@
-
-class Fast_Solver {
-
-};
